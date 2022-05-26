@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Task} from '../../interfaces/Task'
+import {faCoffee} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-task-item',
