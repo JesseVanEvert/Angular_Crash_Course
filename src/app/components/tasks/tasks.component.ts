@@ -11,9 +11,10 @@ import {TASKS} from '../../mock-tasks'
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
+    this.taskService.getTasks().subscribe((tasks) => this.tasks = tasks);
   }
 
 }
