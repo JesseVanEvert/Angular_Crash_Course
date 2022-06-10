@@ -19,7 +19,7 @@ export class AddTaskComponent implements OnInit {
 
   constructor(private uiService: UiService) { 
     this.subscription = this.uiService
-      .onToggle()
+      .onToggleAddTask()
       .subscribe((value) => (this.showAddTask = value))
   }
 
