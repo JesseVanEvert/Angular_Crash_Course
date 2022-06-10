@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostListener } from '@angular/core';
 import { UiService } from 'src/app/services/ui.service';
-import { Task } from '../../interfaces/Task'
+import { Task } from '../../interfaces/Task';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class EditTaskComponent implements OnInit {
     this.reminder = this.task.reminder;
   }
 
-  onSubmit() {
+  changeTask(): void{
     const newTask = {
       id: this.id,
       text: this.text,
@@ -35,5 +35,10 @@ export class EditTaskComponent implements OnInit {
     }
 
     this.taskChange.emit(newTask)
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    this.changeTask()
   }
 }
