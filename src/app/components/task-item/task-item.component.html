@@ -8,6 +8,6 @@
         </fa-icon> 
     </h3>
     <p>{{ task.day }}</p>
-    <app-button color="black" text="Edit" (btnClick)="toggleEditTask()"></app-button>
-    <app-edit-task *ngIf="showEditSection"></app-edit-task>
+    <app-button color="{{ showEditSection ? 'red' : 'black'}}" text="{{ showEditSection ? 'Close' : 'Edit' }}" (btnClick)="toggleEditTask()"></app-button>
+    <app-edit-task *ngIf="showEditSection" [(task)]="task" (taskChange)="editTask($event, task.id)"></app-edit-task>
 </div>
