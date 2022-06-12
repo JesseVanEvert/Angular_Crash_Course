@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Task} from '../../interfaces/Task'
 import {faTimes} from '@fortawesome/free-solid-svg-icons'
-import { UiService } from 'src/app/services/ui.service';
-import { Subscription } from 'rxjs';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -18,12 +16,9 @@ export class TaskItemComponent implements OnInit {
   @Output() onEditTask: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
   showEditSection: boolean = false;
-  subscriptionEditTask: Subscription;
   
-  constructor(private uiService: UiService, private taskService: TaskService) { 
-    this.subscriptionEditTask = this.uiService
-      .onToggleEditTask()
-      .subscribe((value) => (this.showEditSection = value))
+  constructor(private taskService: TaskService) { 
+
   }
 
   ngOnInit(): void {
@@ -42,7 +37,5 @@ export class TaskItemComponent implements OnInit {
     this.taskService.updateTask(task, id).subscribe();
   }
 
-  toggleEditTask(): void {
-    this.uiService.toggleEditTask();
-  }
+
 }

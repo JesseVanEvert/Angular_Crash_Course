@@ -1,4 +1,6 @@
-<form class="add-form">
+<app-button color="{{ showEditSection ? 'red' : 'black'}}" text="{{ showEditSection ? 'Close' : 'Edit' }}" (btnClick)="toggleEditTask()"></app-button>
+
+<form *ngIf="showEditSection" class="add-form">
     <div class="form-control">
         <label for="text">Task</label>
         <input type="text" name="text" id="text" [(ngModel)]="text" placeholder="Add Task">

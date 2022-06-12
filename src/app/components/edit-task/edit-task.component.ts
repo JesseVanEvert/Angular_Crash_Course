@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, HostListener } from '@angular/core';
-import { UiService } from 'src/app/services/ui.service';
 import { Task } from '../../interfaces/Task';
+
 
 
 @Component({
@@ -35,6 +35,10 @@ export class EditTaskComponent implements OnInit {
     }
 
     this.taskChange.emit(newTask)
+  }
+
+  toggleEditTask(): void {
+    this.showEditSection = !this.showEditSection;
   }
 
   @HostListener('window:keyup', ['$event'])
