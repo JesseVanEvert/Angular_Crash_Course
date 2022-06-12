@@ -16,13 +16,13 @@
       "id": 5,
       "text": "test",
       "day": "test",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 6,
-      "text": "Nog een test",
-      "day": "Test",
-      "reminder": false
+      "text": "Nog een testtt",
+      "day": "Testt",
+      "reminder": true
     }
   ]
 }

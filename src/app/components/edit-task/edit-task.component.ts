@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, HostListener } from '@angular/core';
 import { Task } from '../../interfaces/Task';
+import { TaskService } from 'src/app/services/task.service';
 
 
 
@@ -17,7 +18,7 @@ export class EditTaskComponent implements OnInit {
   id: number;
   reminder: boolean = false;
 
-  constructor() {}
+  constructor( private taskService: TaskService ) {}
 
   ngOnInit(): void { 
     this.text = this.task.text;
@@ -31,7 +32,7 @@ export class EditTaskComponent implements OnInit {
       id: this.id,
       text: this.text,
       day: this.day,
-      reminder: this.reminder
+      reminder: !this.reminder
     }
 
     this.taskChange.emit(newTask)
@@ -39,6 +40,12 @@ export class EditTaskComponent implements OnInit {
 
   toggleEditTask(): void {
     this.showEditSection = !this.showEditSection;
+  }
+
+  updateReminder(task: Task): void {
+    console.log(task)
+    this.changeTask()
+    //this.taskService.updateTask(task, task.id);
   }
 
   @HostListener('window:keyup', ['$event'])

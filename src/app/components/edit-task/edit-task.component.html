@@ -11,7 +11,7 @@
     </div>
     <div class="form-control form-control-check">
         <label for="reminder">Set Reminder</label>
-        <input type="checkbox" name="reminder" [(ngModel)]="reminder" id="reminder">
+        <input type="checkbox" name="reminder" [(ngModel)]="reminder" id="reminder" (click)="updateReminder(task)">
     </div>
 </form>
  
