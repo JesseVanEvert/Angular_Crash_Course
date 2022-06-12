@@ -32,7 +32,7 @@ export class EditTaskComponent implements OnInit {
       id: this.id,
       text: this.text,
       day: this.day,
-      reminder: !this.reminder
+      reminder: this.reminder
     }
 
     this.taskChange.emit(newTask)
@@ -43,9 +43,8 @@ export class EditTaskComponent implements OnInit {
   }
 
   updateReminder(task: Task): void {
-    console.log(task)
+    this.reminder = !this.reminder;
     this.changeTask()
-    //this.taskService.updateTask(task, task.id);
   }
 
   @HostListener('window:keyup', ['$event'])
